@@ -40,13 +40,13 @@ func TestValidLoad(t *testing.T) {
 	assert.Equal(t, 3128, p.Port)
 	assert.True(t, bool(p.HTTP))
 	assert.False(t, bool(p.SSL))
-	assert.Equal(t, "http://177.207.216.238:3128", p.ToURL())
+	assert.Equal(t, "http://177.207.216.238:3128", p.ToURL().String())
 
 	p = ps[1]
 	assert.Equal(t, 10200, p.Port)
 	assert.False(t, bool(p.HTTP))
 	assert.True(t, bool(p.Socks4))
-	assert.Equal(t, "socks4://173.214.148.113:10200", p.ToURL())
+	assert.Equal(t, "socks4://173.214.148.113:10200", p.ToURL().String())
 }
 
 func TestWrongCodeLoad(t *testing.T) {

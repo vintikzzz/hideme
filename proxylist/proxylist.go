@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
+	"net/url"
 )
 
 type boolFlag bool
@@ -45,23 +46,28 @@ type Proxy struct {
 	Socks5      boolFlag `json:"socks5"`
 }
 
-// ToURL makes proxy URL
-func (proxy *Proxy) ToURL() string {
-	protocol := "http"
+// Scheme returns scheme name
+func (proxy *Proxy) Scheme() string {
+	scheme := "http"
 
 	if proxy.SSL {
-		protocol = "https"
+		scheme = "https"
 	}
 
 	if proxy.Socks4 {
-		protocol = "socks4"
+		scheme = "socks4"
 	}
 
 	if proxy.Socks5 {
-		protocol = "socks5"
+		scheme = "socks5"
 	}
 
-	return fmt.Sprintf("%s://%s:%d", protocol, proxy.IP, proxy.Port)
+	return scheme
+}
+
+// ToURL makes proxy URL
+func (proxy *Proxy) ToURL() *url.URL {
+	return &url.URL{Scheme: proxy.Scheme(), Host: fmt.Sprintf("%s:%d", proxy.IP, proxy.Port)}
 }
 
 // Load proxy list

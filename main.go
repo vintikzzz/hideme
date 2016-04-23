@@ -37,7 +37,7 @@ func main() {
 			os.Exit(2)
 		}
 		for _, pr := range prs {
-			fmt.Println(pr.ToURL())
+			fmt.Println(pr.ToURL().String())
 		}
 	}
 
