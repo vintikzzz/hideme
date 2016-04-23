@@ -37,7 +37,7 @@ func main() {
 			os.Exit(2)
 		}
 		for _, pr := range prs {
-			fmt.Printf("%s:%d\n", pr.IP, pr.Port)
+			fmt.Println(pr.ToURL())
 		}
 	}
 

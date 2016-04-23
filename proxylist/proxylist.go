@@ -3,6 +3,7 @@ package proxylist
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"net"
 	"net/http"
@@ -42,6 +43,25 @@ type Proxy struct {
 	SSL         boolFlag `json:"ssl"`
 	Socks4      boolFlag `json:"socks4"`
 	Socks5      boolFlag `json:"socks5"`
+}
+
+// ToURL makes proxy URL
+func (proxy *Proxy) ToURL() string {
+	protocol := "http"
+
+	if proxy.SSL {
+		protocol = "https"
+	}
+
+	if proxy.Socks4 {
+		protocol = "socks4"
+	}
+
+	if proxy.Socks5 {
+		protocol = "socks5"
+	}
+
+	return fmt.Sprintf("%s://%s:%d", protocol, proxy.IP, proxy.Port)
 }
 
 // Load proxy list
