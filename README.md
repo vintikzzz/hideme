@@ -4,6 +4,10 @@
 
 This peace of software not connected with hideme.ru service owners.
 
+### Install
+
+Simply download binary from [here](https://github.com/vintikzzz/hideme/releases)
+
 ### Using cli
 
 #### Load proxy list

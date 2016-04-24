@@ -1,1 +1,16 @@
 language: go
+env:
+  - PATH=/home/travis/gopath/bin:$PATH
+before_deploy:
+  - go get github.com/mitchellh/gox
+  - gox -build-toolchain
+  - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
+deploy:
+  provider: releases
+  api_key:
+    secure: GMH1XflLiQytMD9YpDhNmaW0J+1WnrooYInyBzoNwdqIT9CRUjU1rU17JCTM5SYhVAdKa+xllh86CKeAYtZFVT+QaSR2/kSpS+aD3GgvU0219McBlboVkBMTOc/lpfFYDBtW5FsZ5P+hduR/NNkYjlcOaOreRKrwX1ZWp8pB8Dh9lIkT/imAtGQwIFLuugZjhvuiN4BelQ9kfQ0lbI6dqrn2k4ZMemwFQdvscbxpp8bR3djdlqTsIGnKxQsNVTiH1RiPTSymqeeBdiVGQZvdEK5emgn5x7GGfdtmMv9S4sHRYGf5YOYqiOsEPGoXWbjR+lH78uhZw610ahoU+MmSEQ8AZeP9tE+eUfYRLRZLXkg3nCr9KkQibnEhUAzO5uusFjjK57wLPtA71qkn+R0P5u7xCSj01GiWY3ux0xt1qLhmRqj9EFjBMARELJgGNB3A7GZOMSm+i2Yn6YZhWqUzGqChY5vCYi5Pi9LHo48QQLizNdMMVbZjZWWKVYQQMcz+sij4EmHiE9i9iEZB1QxsOgSZdqG/Pw1eCKq5Ash9x1IkqK5tsvAJgv6z9J8V6xKbkO4bwxDagtc+CYn8FSJmlT+CLpGxyrG24WoCz4NbkwcYNe4X1sEQrjMFPC342oopg1vaOJO+oCWp+WiylDiJ2wDo0lmq4k8818bBGBxxFC4=
+  file_glob: true
+  file: "dist/*"
+  skip_cleanup: true
+  on:
+    tags: true
