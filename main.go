@@ -8,7 +8,7 @@ import (
 	"github.com/vintikzzz/hideme/proxylist"
 )
 
-const baseURI = "http://hideme.ru/api/proxylist.txt?out=js&code="
+const baseURI = "http://hideme.name/api/proxylist.txt?out=js&code="
 
 func main() {
 	proxylistCommand := flag.NewFlagSet("proxylist", flag.ExitOnError)

@@ -1,8 +1,8 @@
 [![Build Status](https://secure.travis-ci.org/vintikzzz/hideme.png?branch=master)](http://travis-ci.org/vintikzzz/hideme)
 
-## Hideme: library and cli for managing hideme.ru
+## Hideme: library and cli for managing hideme.name
 
-This peace of software not connected with hideme.ru service owners.
+This peace of software not connected with hideme.name service owners.
 
 ### Install
 
@@ -15,7 +15,7 @@ Simply download binary from [here](https://github.com/vintikzzz/hideme/releases)
 ```
 hideme proxylist -code %code%
 ```
-`%code%` is provided by hideme.ru
+`%code%` is provided by hideme.name
 
 ### Credits
 
